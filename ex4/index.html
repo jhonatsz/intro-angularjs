@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html ng-app="myAngularApplication">
+<head>
+    <title>Sample Angular Application</title>
+
+    <script src="libs/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/book/localBooksService.js"></script>
+    <script src="app/book/remoteBooksService.js"></script>
+    <script src="app/book/booksController.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body ng-controller="booksController">
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h3 ng-bind="message"></h3>
+
+                <input type="button" ng-click="fetchBooks()" value="Fetch Books" class="btn btn-success">
+
+                <input type="button" ng-click="fetchBooksFromServer()" value="Fetch Books From Server" class="btn btn-success">
+                <p ng-hide="books.length > 0">No books available</p>
+
+                <table class="table table-striped" ng-show="books.length > 0">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                BookName
+                            </th>
+                            <th>
+                                Author Name
+                            </th>
+                            <th>
+                                ISBN
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="book in books | limitTo:5 | orderBy: (isOrderDescending == true? '-': '') + orderField | filter:filterString">
+                            <td>
+                                {{ book.ID}}
+                            </td>
+                            <td>
+                                {{book.BookName}}
+                            </td>
+                            <td>
+                                {{book.AuthorName}}
+                            </td>
+                            <td>
+                                {{book.ISBN}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
