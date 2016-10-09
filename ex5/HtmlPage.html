@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <form ng-submit="addBook()" class="form-inline">
+        <div class="form-group">
+            <label for="inputBookName">
+                Book Name
+            </label>
+            <input id="inputBookName" type="text" placeholder="Book Name"
+                   ng-model="book.BookName" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="inputAuthorName">
+                Author Name
+            </label>
+            <input id="inputAuthorName" type="text" placeholder="Author Name"
+                   ng-model="book.AuthorName" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="inputISBN">
+               ISBN
+            </label>
+            <input id="inputISBN" type="text" placeholder="ISBN"
+                   ng-model="book.ISBN" class="form-control" />
+        </div>
+
+        <input type="submit" class="btn btn-success" value="Create">
+
+    </form>
+
+
+</body>
+</html>
