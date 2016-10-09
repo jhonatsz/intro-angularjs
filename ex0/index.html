@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="myAngularApplication">
+<head>
+    <title>Sample Angular Application</title>
+
+    <script src="libs/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/book/booksController.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body ng-controller="booksController">
+	<div class="row clearfix">
+		<div class="col-md-12 columns">
+				<h3>
+					{{ message }}
+				</h3>
+				<h4 ng-controller="booksController as booksCtrl">
+          	{{ booksCtrl.greeting }}
+        </h4>
+		</div>
+	</div>
+</body>
