@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="myAngularApplication">
+<head>
+    <title>Sample Angular Application</title>
+
+    <script src="libs/angular.min.js"></script>
+    <script src="libs/angular-route.js"></script>>
+    <script src="app/app.js"></script>
+    <script src="app/home/homeController.js"></script>
+    <script src="app/contact/contactController.js"></script>
+    <script src="app/about/aboutController.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Angular Routing Demo</a>
+                    </div>
+
+                    <div class="navbar" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="#home">Home</a>
+                            </li>
+                            <li>
+                                <a href="#about">About us</a>
+                            </li>
+                            <li>
+                                <a href="#contact">Contact us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="jumbotron">
+
+                    <div ng-view>
+                        {{currentViewName}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
