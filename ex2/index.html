@@ -11,21 +11,34 @@
     <link href="css/style.css" rel="stylesheet">
 
 </head>
-<body ng-controller="booksController">
+<body ng-controller="booksController" ng-init="message2 = 'initialized from ngInit'">
 
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-12 column">
-                <h3>
-                    {{ message }}
+                <h3 ng-bind="message">
                 </h3>
+                <h4>
+                    {{ message2 }}
+                </h4>
 
                 <h4 ng-controller="booksController as booksCtrl">
                     {{ booksCtrl.greeting }}
                 </h4>
 
+                <p>{{ test }}</p>
+                <input type="text" ng-model="test" value=""/>
+
+                <hr/>
+
+                Select Country: <select ng-model="countries" ng-options="country for country in countries">
+                </select>
+
+                <hr />
+
                 <input type="button" ng-click="fetchBooks()" value="Fetch Books" class="btn btn-success">
-                <table class="table table-striped">
+                <p ng-hide="books.length > 0">No books available</p>
+                <table class="table table-striped" ng-show="books.length > 0">
                     <thead>
                         <tr>
                             <th>
@@ -56,7 +69,7 @@
                             <td>
                                 {{book.ISBN}}
                             </td>
-                        </tr>                       
+                        </tr>
                     </tbody>
                 </table>
             </div>
