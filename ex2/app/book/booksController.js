@@ -15,6 +15,10 @@
             "Germany"
         ];
 
+        $scope.orderField = "ID";
+
+        $scope.allCapsMessage = $filter("uppercase")($scope.message);
+        $scope.conversionRate = $filter("number")(62.3, 5);
 
         $scope.fetchBooks = function () {
             $scope.books = [

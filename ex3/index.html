@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html ng-app="myAngularApplication">
+<head>
+    <title>Sample Angular Application</title>
+
+    <script src="libs/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/filter.js"></script>
+    <script src="app/book/booksController.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body ng-controller="booksController" ng-init="message2 = 'INITIALIZED from ngInit'; quantity = '23.45'; today = '1436248568531'; price = '25.4'">
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h3 ng-bind="message | uppercase"></h3>
+                <h4>
+                    {{ message2 | lowercase}}
+                </h4>
+
+                <h4 ng-controller="booksController as booksCtrl">
+                    {{ booksCtrl.greeting }}
+                </h4>
+
+                <p>{{ test }}</p>
+                <input type="text" ng-model="test" value="" />
+
+                <hr />
+
+                Select Country: <select ng-model="countries" ng-options="country for country in countries"></select>
+
+                <hr />
+                <p>
+                    {{ 10 | number }}
+                </p>
+                <p>
+                    {{ quantity | number }}
+                </p>
+                <p>
+                    {{ quantity | number:5 }}
+                </p>
+                <p>
+                    {{ today | date }}
+                </p>
+                <p>
+                    {{ today | date:'dd, MMMM, yyyy' }}
+                </p>
+                <p>
+                    {{ price | currency }}
+                </p>
+                <p>
+                    {{ price | currency:'Rs ' }}
+                </p>
+                <p>
+                    {{ message | limitTo:5}}
+                </p>
+                <hr />
+
+                <input type="button" ng-click="fetchBooks()" value="Fetch Books" class="btn btn-success">
+                <p ng-hide="books.length > 0">No books available</p>
+                <p ng-show="books.length > 0">
+                    Order by: <select ng-model="orderField">
+                        <option value="ID">ID</option>
+                        <option value="BookName">BookName</option>
+                        <option value="AuthorName">AuthorName</option>
+                        <option value="ISBN">ISBN</option>
+                    </select>
+
+                    Descending: <input type="checkbox" ng-model="isOrderDescending" />
+
+                    Filter: <input type="text" ng-model="filterString" value="" />
+
+                    <table class="table table-striped" ng-show="books.length > 0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    BookName
+                                </th>
+                                <th>
+                                    Author Name
+                                </th>
+                                <th>
+                                    ISBN
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="book in books | limitTo:5 | orderBy: (isOrderDescending == true? '-': '') + orderField | filter:filterString">
+                                <td>
+                                    {{ book.ID}}
+                                </td>
+                                <td>
+                                    {{book.BookName}}
+                                </td>
+                                <td>
+                                    {{book.AuthorName}}
+                                </td>
+                                <td>
+                                    {{book.ISBN}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+
+                <p>
+                    {{ allCapsMessage }}
+                </p>
+
+                <p>
+                    {{ conversionRate }}
+                </p>
+
+                <p>
+                    {{ 2 | power:4 }}
+                </p>
+
+              <p>
+                JSON for books: {{ books | json }}
+               </p>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
